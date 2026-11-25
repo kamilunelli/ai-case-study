@@ -1,0 +1,31 @@
+arquivo,numero,nome,dificuldade,link
+p01,1,"Two Sum",Fácil,https://leetcode.com/problems/two-sum/
+p02,13,"Roman to Integer",Fácil,https://leetcode.com/problems/roman-to-integer/
+p03,14,"Longest Common Prefix",Fácil,https://leetcode.com/problems/longest-common-prefix/
+p04,20,"Valid Parentheses",Fácil,https://leetcode.com/problems/valid-parentheses/
+p05,21,"Merge Two Sorted Lists",Fácil,https://leetcode.com/problems/merge-two-sorted-lists/
+p06,70,"Climbing Stairs",Fácil,https://leetcode.com/problems/climbing-stairs/
+p07,121,"Best Time to Buy and Sell Stock",Fácil,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+p08,125,"Valid Palindrome",Fácil,https://leetcode.com/problems/valid-palindrome/
+p09,242,"Valid Anagram",Fácil,https://leetcode.com/problems/valid-anagram/
+p10,704,"Binary Search",Fácil,https://leetcode.com/problems/binary-search/
+p11,3,"Longest Substring Without Repeating Characters",Média,https://leetcode.com/problems/longest-substring-without-repeating-characters/
+p12,5,"Longest Palindromic Substring",Média,https://leetcode.com/problems/longest-palindromic-substring/
+p13,11,"Container With Most Water",Média,https://leetcode.com/problems/container-with-most-water/
+p14,15,"3Sum",Média,https://leetcode.com/problems/3sum/
+p15,22,"Generate Parentheses",Média,https://leetcode.com/problems/generate-parentheses/
+p16,33,"Search in Rotated Sorted Array",Média,https://leetcode.com/problems/search-in-rotated-sorted-array/
+p17,49,"Group Anagrams",Média,https://leetcode.com/problems/group-anagrams/
+p18,56,"Merge Intervals",Média,https://leetcode.com/problems/merge-intervals/
+p19,200,"Number of Islands",Média,https://leetcode.com/problems/number-of-islands/
+p20,322,"Coin Change",Média,https://leetcode.com/problems/coin-change/
+p21,4,"Median of Two Sorted Arrays",Difícil,https://leetcode.com/problems/median-of-two-sorted-arrays/
+p22,10,"Regular Expression Matching",Difícil,https://leetcode.com/problems/regular-expression-matching/
+p23,23,"Merge k Sorted Lists",Difícil,https://leetcode.com/problems/merge-k-sorted-lists/
+p24,32,"Longest Valid Parentheses",Difícil,https://leetcode.com/problems/longest-valid-parentheses/
+p25,41,"First Missing Positive",Difícil,https://leetcode.com/problems/first-missing-positive/
+p26,42,"Trapping Rain Water",Difícil,https://leetcode.com/problems/trapping-rain-water/
+p27,51,"N-Queens",Difícil,https://leetcode.com/problems/n-queens/
+p28,76,"Minimum Window Substring",Difícil,https://leetcode.com/problems/minimum-window-substring/
+p29,84,"Largest Rectangle in Histogram",Difícil,https://leetcode.com/problems/largest-rectangle-in-histogram/
+p30,239,"Sliding Window Maximum",Difícil,https://leetcode.com/problems/sliding-window-maximum/
