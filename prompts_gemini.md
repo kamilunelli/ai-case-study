@@ -1,9 +1,15 @@
-# Prompts — Gemini
+# Prompts — Gemini (4 Neon, Nível de Raciocínio Alto)
 
-Ferramenta: Antigravity ou app do Gemini. Para cada problema: abra uma conversa/sessão limpa (no Claude Code: `/clear`), copie o bloco inteiro e cole. Depois submeta no LeetCode e anote em `aceitas.csv`.
+Ferramenta: app do Gemini (gemini.google.com), modelo "Análise mais profunda" (4 Neon), Nível de Raciocínio Alto.
+
+Para cada problema:
+1. Clique em "Nova conversa" e confira se o modelo continua 4 Neon com raciocínio Alto.
+2. Copie o bloco inteiro do problema e cole.
+3. Copie só o código da resposta, sem mudar nada, e salve em `solucoes/gemini/pXX.py` (o app não salva arquivos; a frase sobre salvar fica no prompt só para manter o texto igual ao do Claude).
+4. Submeta no LeetCode e anote em `aceitas.csv` (1 = passou, 0 = não passou) e em `registro_coleta.csv` (data e modelo).
+5. Se a solução falhar, não peça correção: anote 0 e siga para o próximo.
 
 Os enunciados foram reescritos em português a partir do LeetCode, mantendo regras, exemplos e restrições. Os dois arquivos de prompts são idênticos, exceto pelo caminho onde a solução é salva.
-
 
 ---
 
