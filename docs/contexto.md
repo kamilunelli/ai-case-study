@@ -15,8 +15,15 @@ limitações e aspectos éticos. **Plágio ou fraude (dados não verdadeiros) ze
   para os mesmos problemas de programação?
 - **H0:** mediana das diferenças pareadas de CC total (Claude − Gemini) = 0.
   **H1:** mediana das diferenças ≠ 0. Hipóteses análogas para SLOC (análise secundária).
-- **Variável independente:** IA (2 níveis). **Dependentes:** CC total (módulo + funções/métodos, via radon
-  `ComplexityVisitor.total_complexity`) e SLOC (radon raw). **Controle:** aceita ou não no LeetCode.
+- **Variável independente:** IA (2 níveis). **Dependentes:** CC total = **módulo + funções/métodos +
+  funções internas** (radon `ComplexityVisitor.total_complexity` + complexidade das funções internas) e
+  SLOC (radon raw). **Controle:** aceita ou não no LeetCode.
+  - *Correção registrada:* a primeira implementação usava só o `total_complexity` do radon, que omite
+    funções internas (afetava 7 das 60 soluções). Foi corrigida em 25/11/2026, após a verificação dos
+    dados. Wilcoxon para CC: implementação inicial p = 0,040; corrigida p = 0,049 (a corrigida é a
+    análise principal; o artigo reporta as duas).
+  - `cc_max` (maior CC de um bloco) é **análise exploratória, não planejada no protocolo**; não tirar
+    conclusões a partir dela.
 - **Amostra:** 30 problemas gratuitos do LeetCode, 10 fáceis / 10 médios / 10 difíceis (`problemas.csv`).
   Seleção por conveniência, sugerida por IA (Claude), já declarada como ameaça.
 - **Análise:** descritiva + boxplots; Shapiro-Wilk nas diferenças; **Wilcoxon signed-rank** bicaudal

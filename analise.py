@@ -2,7 +2,7 @@
 Análise do experimento: complexidade ciclomática (CC) e LOC de código gerado por duas IAs.
 
 Instalação:
-    pip install radon scipy pandas matplotlib
+    pip install radon scipy pandas numpy matplotlib
 
 Estrutura esperada das pastas (mesmo nome de arquivo = mesmo problema):
     solucoes/
@@ -10,7 +10,7 @@ Estrutura esperada das pastas (mesmo nome de arquivo = mesmo problema):
         ia_b/p01.py ... p30.py
 
 Opcional: aceitas.csv com colunas  problema,ia,aceita   (ex.: p01,ia_a,1)
-    -> registra se a solução foi aceita pelo juiz (Beecrowd/LeetCode).
+    -> registra se a solução foi aceita pelo juiz (LeetCode).
        Se existir, a análise é repetida só com os pares em que as duas foram aceitas.
 
 Uso:

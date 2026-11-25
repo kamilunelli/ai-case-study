@@ -16,11 +16,11 @@
 \title{Complexidade Ciclomática de Código Gerado por Modelos de Linguagem:\\
 Um Experimento Comparativo entre Claude e Gemini}
 
-\author{Nome Aluno 1\inst{1}, Nome Aluno 2\inst{1}}
+\author{Samuel de Souza Marcelino\inst{1}, Kamille Lunelli\inst{1}}
 
 \address{Departamento de Engenharia de Software -- Centro de Educação Superior do Alto Vale do Itajaí\\
 Universidade do Estado de Santa Catarina (UDESC) -- Ibirama, SC -- Brasil
-  \email{\{aluno1,aluno2\}@edu.udesc.br}
+  \email{\{aluno1,aluno2\}@edu.udesc.br} % [PREENCHER] e-mails institucionais
 }
 
 \begin{document}
@@ -87,6 +87,7 @@ código-fonte (SLOC).
 
 %=====================================================================
 \section{Metodologia}
+\label{sec:metodologia}
 O estudo segue as diretrizes de experimentação em Engenharia de Software de Wohlin et al.
 \cite{wohlin2012} e caracteriza-se como um experimento \emph{in vitro} com
 delineamento pareado: cada problema (unidade experimental) recebe os dois tratamentos.
@@ -109,10 +110,13 @@ Hipóteses análogas foram definidas para SLOC ($H_{0,LOC}$ e $H_{1,LOC}$).
   definida como a soma das complexidades do nível do módulo, das funções e métodos e das funções
   internas (funções definidas dentro de outras funções). No Radon, ela corresponde ao atributo
   \texttt{total\_complexity} (módulo e funções/métodos) somado à complexidade das funções
-  internas, que esse atributo não inclui. Uma versão inicial do script de análise não somava as
-  funções internas, o que afetava 7 das 60 soluções; o erro foi detectado na verificação dos
-  dados e corrigido para que o cálculo correspondesse à definição do protocolo. Todos os
-  resultados apresentados foram obtidos com a versão corrigida;
+  internas, que esse atributo não inclui. A definição pretendida desde o protocolo incluía todas
+  as funções da solução; porém, a implementação inicial do script de análise usava apenas o
+  \texttt{total\_complexity} e, por isso, omitia as funções internas, o que afetava 7 das 60
+  soluções. O erro foi detectado na verificação dos dados e corrigido. Para transparência, os
+  dois resultados do teste de Wilcoxon para CC são reportados na Seção~\ref{sec:resultados}
+  (implementação inicial: $p = 0{,}040$; implementação corrigida: $p = 0{,}049$); a análise
+  principal, e todos os demais resultados apresentados, usam a implementação corrigida;
   (ii) SLOC, linhas de código excluindo comentários e linhas em branco.
   \item \textbf{Variável de controle:} corretude da solução (aceita ou não pelo juiz online).
 \end{itemize}
@@ -123,7 +127,7 @@ fácil, 10 média e 10 difícil, segundo a classificação da própria plataform
 por conveniência, com o auxílio de uma ferramenta de IA (Claude), buscando cobrir tópicos
 variados; os problemas não foram sorteados. Como o Claude é um dos modelos comparados, essa
 escolha é discutida como ameaça à validade (Seção~\ref{sec:ameacas}). A lista completa, com
-identificadores, está no repositório [link].
+identificadores, está no repositório do estudo (\url{https://github.com/kamilunelli/ai-case-study}).
 
 \subsection{Instrumentação e Coleta}
 Os enunciados dos 30 problemas foram reescritos em português a partir do LeetCode, mantendo
@@ -149,7 +153,7 @@ solução foi submetida ao LeetCode para registrar a corretude. A coleta ocorreu
 novembro de 2026 (Gemini: 24 e 25/11/2026; Claude: 25/11/2026).
 
 As métricas foram extraídas automaticamente com a ferramenta Radon\footnote{\url{https://radon.readthedocs.io}}
-(versão 6.0.1), por meio de um script disponibilizado em [link do repositório].
+(versão 6.0.1), por meio de um script disponibilizado no repositório do estudo (\url{https://github.com/kamilunelli/ai-case-study}).
 
 \subsection{Análise dos Dados}
 Foram calculadas estatísticas descritivas (média, desvio padrão, mediana, quartis, mínimo
@@ -164,6 +168,7 @@ foram repetidos considerando apenas os pares em que ambas as soluções foram ac
 
 %=====================================================================
 \section{Resultados}
+\label{sec:resultados}
 \subsection{Corretude das Soluções}
 O Claude teve 30 de 30 soluções aceitas pelo LeetCode (100\%) e o Gemini, 29 de 30 (97\%).
 A única solução recusada foi a do Gemini para o problema p24, que terminou com erro de
@@ -192,7 +197,10 @@ das duas IAs se sobrepõem em grande parte, em ambas as métricas.
 Shapiro-Wilk indicou que as diferenças pareadas não seguem distribuição normal
 ($W = 0{,}780$, $p < 0{,}001$). O teste de Wilcoxon (bicaudal) resultou em $W = 28{,}0$ e
 $p = 0{,}0491$, levando à rejeição de $H_0$ ao nível de 0,05; a verificação de robustez com o
-método de Pratt, que mantém os empates na ordenação, resultou em $p = 0{,}0264$. A direção da
+método de Pratt, que mantém os empates na ordenação, resultou em $p = 0{,}0264$. Com a
+implementação inicial do script, que omitia as funções internas (Seção~\ref{sec:metodologia}),
+o mesmo teste havia resultado em $W = 26{,}0$ e $p = 0{,}0401$; a análise principal é a da
+implementação corrigida, e a conclusão sobre $H_0$ é a mesma nas duas. A direção da
 diferença indica valores maiores para o Gemini: a correlação rank-bisserial pareada foi
 $r = -0{,}533$ (valores negativos indicam CC menor para o Claude). O delta de Cliff foi
 $-0{,}110$, classificado como desprezível. Como referência, o teste $t$ pareado resultou em
@@ -210,8 +218,10 @@ de Pratt, $p = 0{,}0411$. Os tamanhos de efeito foram $r = -0{,}505$ e delta de 
 (desprezível). Para SLOC, o resultado se manteve: $W = 30{,}0$, $p = 0{,}0086$ (Pratt:
 $p = 0{,}0148$), $r = -0{,}684$ e delta de Cliff $-0{,}136$ (desprezível).
 
-O script também calcula a maior complexidade entre os blocos de cada solução (\texttt{cc\_max}),
-que não é uma variável dependente do protocolo e é reportada apenas como informação complementar.
+\textbf{Análise exploratória (não planejada).} O script também calcula a maior complexidade
+entre os blocos de cada solução (\texttt{cc\_max}). Essa medida não estava prevista no protocolo,
+não é uma variável dependente do estudo e é reportada apenas como análise exploratória; nenhuma
+conclusão é tirada a partir dela.
 Em 53 das 60 soluções ela vale exatamente a CC total menos 1; as exceções são as sete soluções com
 funções internas. Para essa medida, o Wilcoxon resultou em $W = 19{,}5$ e $p = 0{,}0145$ (Pratt:
 $p = 0{,}0062$), com $r = -0{,}675$ e delta de Cliff $-0{,}148$ (pequeno).
@@ -296,7 +306,7 @@ não rejeição de $H_0$ pelo Wilcoxon ($p = 0{,}073$).
 O estudo não envolve participantes humanos nem dados pessoais. Os enunciados dos problemas
 não são reproduzidos neste artigo, apenas seus identificadores, respeitando os termos de uso
 das plataformas. Todos os dados brutos (códigos gerados, métricas e script) estão disponíveis
-em [link], permitindo replicação. % Declarar aqui se usaram IA para ajudar na escrita.
+em \url{https://github.com/kamilunelli/ai-case-study}, permitindo replicação. % Declarar aqui se usaram IA para ajudar na escrita.
 
 %=====================================================================
 \section{Conclusão}
