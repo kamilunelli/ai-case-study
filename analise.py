@@ -30,16 +30,35 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 
+def _closures(f):
+    """Funções internas (definidas dentro de outra função), em qualquer nível."""
+    for c in f.closures:
+        yield c
+        yield from _closures(c)
+
+
+def _todas_funcoes(v):
+    def metodos(cls):
+        for m in cls.methods:
+            yield m
+        for ic in cls.inner_classes:
+            yield from metodos(ic)
+    principais = list(v.functions) + [m for c in v.classes for m in metodos(c)]
+    internas = [c for f in principais for c in _closures(f)]
+    return principais, internas
+
+
 def extrair_metricas(arquivo: Path) -> dict:
     codigo = arquivo.read_text(encoding="utf-8")
     v = ComplexityVisitor.from_code(codigo)
-    blocos = [f.complexity for f in v.functions] + \
-             [m.complexity for c in v.classes for m in c.methods]
+    principais, internas = _todas_funcoes(v)
+    blocos = [f.complexity for f in principais + internas]
     return {
-        # CC total = código no nível do módulo + todas as funções/métodos
-        # (importante: soluções do Beecrowd costumam ter código fora de funções)
-        "cc_total": v.total_complexity,
+        # CC total = nível do módulo + todas as funções/métodos + funções internas
+        # (o total_complexity do radon não soma funções internas, ex.: dfs dentro de um método)
+        "cc_total": v.total_complexity + sum(f.complexity for f in internas),
         "cc_max": max(blocos + [v.complexity]),
+        "n_funcoes_internas": len(internas),
         "sloc": analyze(codigo).sloc,  # linhas de código sem comentários/brancos
     }
 
