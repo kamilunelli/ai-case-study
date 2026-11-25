@@ -1,0 +1,57 @@
+
+=== Todos os pares | métrica: cc_total | n = 30 pares ===
+claude: média=6.13 dp=2.60 mediana=6.00 Q1=5.00 Q3=7.00 min=2 max=13
+gemini: média=6.67 dp=2.97 mediana=6.00 Q1=5.00 Q3=7.75 min=2 max=13
+Pares empatados (diferença zero): 15
+Shapiro-Wilk nas diferenças: W=0.708, p=0.0000 (não normal)
+Wilcoxon signed-rank (bicaudal): W=26.0, p=0.0401 -> rejeita H0 (alfa = 0,05)
+  (verificação de robustez, zero_method='pratt': p=0.0239)
+t pareado (referência): t=-2.040, p=0.0506, Cohen's d_z=-0.372
+Effect size: rank-bisserial pareado r=-0.567 | Cliff's delta=-0.131 (desprezível)
+(valores positivos = claude tende a ter cc_total maior que gemini)
+
+=== Todos os pares | métrica: sloc | n = 30 pares ===
+claude: média=14.70 dp=5.40 mediana=14.00 Q1=11.00 Q3=17.00 min=4 max=26
+gemini: média=16.37 dp=5.93 mediana=15.50 Q1=11.25 Q3=20.75 min=8 max=28
+Pares empatados (diferença zero): 10
+Shapiro-Wilk nas diferenças: W=0.889, p=0.0045 (não normal)
+Wilcoxon signed-rank (bicaudal): W=31.0, p=0.0055 -> rejeita H0 (alfa = 0,05)
+  (verificação de robustez, zero_method='pratt': p=0.0091)
+t pareado (referência): t=-2.763, p=0.0099, Cohen's d_z=-0.504
+Effect size: rank-bisserial pareado r=-0.705 | Cliff's delta=-0.141 (desprezível)
+(valores positivos = claude tende a ter sloc maior que gemini)
+
+=== Todos os pares | métrica: cc_max | n = 30 pares ===
+claude: média=5.13 dp=2.60 mediana=5.00 Q1=4.00 Q3=6.00 min=1 max=12
+gemini: média=5.67 dp=2.97 mediana=5.00 Q1=4.00 Q3=6.75 min=1 max=12
+Pares empatados (diferença zero): 15
+Shapiro-Wilk nas diferenças: W=0.708, p=0.0000 (não normal)
+Wilcoxon signed-rank (bicaudal): W=26.0, p=0.0401 -> rejeita H0 (alfa = 0,05)
+  (verificação de robustez, zero_method='pratt': p=0.0239)
+t pareado (referência): t=-2.040, p=0.0506, Cohen's d_z=-0.372
+Effect size: rank-bisserial pareado r=-0.567 | Cliff's delta=-0.131 (desprezível)
+(valores positivos = claude tende a ter cc_max maior que gemini)
+
+Taxa de aceitação: claude=100%, gemini=97%
+
+=== Só pares com as duas soluções aceitas | métrica: cc_total | n = 29 pares ===
+claude: média=6.17 dp=2.63 mediana=6.00 Q1=5.00 Q3=7.00 min=2 max=13
+gemini: média=6.69 dp=3.02 mediana=6.00 Q1=5.00 Q3=8.00 min=2 max=13
+Pares empatados (diferença zero): 15
+Shapiro-Wilk nas diferenças: W=0.705, p=0.0000 (não normal)
+Wilcoxon signed-rank (bicaudal): W=24.0, p=0.0581 -> não rejeita H0 (alfa = 0,05)
+  (verificação de robustez, zero_method='pratt': p=0.0370)
+t pareado (referência): t=-1.915, p=0.0658, Cohen's d_z=-0.356
+Effect size: rank-bisserial pareado r=-0.543 | Cliff's delta=-0.120 (desprezível)
+(valores positivos = claude tende a ter cc_total maior que gemini)
+
+=== Só pares com as duas soluções aceitas | métrica: sloc | n = 29 pares ===
+claude: média=14.72 dp=5.50 mediana=14.00 Q1=11.00 Q3=17.00 min=4 max=26
+gemini: média=16.38 dp=6.04 mediana=15.00 Q1=11.00 Q3=21.00 min=8 max=28
+Pares empatados (diferença zero): 10
+Shapiro-Wilk nas diferenças: W=0.887, p=0.0048 (não normal)
+Wilcoxon signed-rank (bicaudal): W=30.0, p=0.0086 -> rejeita H0 (alfa = 0,05)
+  (verificação de robustez, zero_method='pratt': p=0.0148)
+t pareado (referência): t=-2.651, p=0.0131, Cohen's d_z=-0.492
+Effect size: rank-bisserial pareado r=-0.684 | Cliff's delta=-0.136 (desprezível)
+(valores positivos = claude tende a ter sloc maior que gemini)
